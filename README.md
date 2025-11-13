@@ -1,6 +1,4 @@
-# spring-ai-mcp-server-resources
-
-# 🧠 Spring AI MCP Resources Server
+# 🧠 spring-ai-mcp-server-resources
 
 This project demonstrates how to expose **local documents as MCP (Model Context Protocol) resources** using **Spring AI**.  
 It allows AI models (through the MCP protocol) to access files dynamically from a local directory — such as `.txt`, `.md`, `.json`, or other text-based documents.
