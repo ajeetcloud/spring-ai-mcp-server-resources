@@ -2,9 +2,11 @@ package com.spring.ai.mcpserver.resources;
 
 import io.modelcontextprotocol.server.McpServerFeatures;
 import io.modelcontextprotocol.spec.McpSchema;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,7 +18,11 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @SpringBootApplication
+@EnableScheduling
 public class SpringAiMcpServerResourcesApplication {
+
+    @Value("${resource.directory.path}")
+    private String directoryPath;
 
     public static void main(String[] args) {
         SpringApplication.run(SpringAiMcpServerResourcesApplication.class, args);
@@ -24,7 +30,7 @@ public class SpringAiMcpServerResourcesApplication {
 
     @Bean
     public List<McpServerFeatures.SyncResourceSpecification> myResources() {
-        String path = "F:\\Temp\\documents";
+        String path = directoryPath;
         Path folderPath = Paths.get(path);
 
         try(Stream<Path> paths = Files.list(folderPath)) {
