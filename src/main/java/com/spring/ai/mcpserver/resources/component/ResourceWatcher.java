@@ -27,22 +27,11 @@ public class ResourceWatcher {
         observer.addListener(new FileAlterationListenerAdaptor() {
 
             @Override
-            public void onFileCreate(final File file) {
+            public void onFileChange(final File file) {
                 System.out.println("File created: " + file.getName());
                 mcpSyncServer.notifyResourcesListChanged();
             }
 
-            @Override
-            public void onFileDelete(final File file) {
-                System.out.println("File deleted: " + file.getName());
-                mcpSyncServer.notifyResourcesListChanged();
-            }
-
-            @Override
-            public void onFileChange(File file) {
-                System.out.println("File changed: " + file.getName());
-                mcpSyncServer.notifyResourcesListChanged();
-            }
         });
         new FileAlterationMonitor(2000, observer).start();
     }
