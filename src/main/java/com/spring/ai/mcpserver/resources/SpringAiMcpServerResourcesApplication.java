@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -18,7 +17,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @SpringBootApplication
-@EnableScheduling
 public class SpringAiMcpServerResourcesApplication {
 
     @Value("${resource.directory.path}")
@@ -71,6 +69,4 @@ public class SpringAiMcpServerResourcesApplication {
                 });
         return spec;
     }
-
-
 }
